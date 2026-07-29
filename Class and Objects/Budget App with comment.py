@@ -325,13 +325,10 @@ def create_spend_chart(categories):
     # =====================================
     spent_amounts = []
 
-
     # =====================================
     # প্রতিটি Category-এর উপর Loop চলছে।
     # =====================================
-    #
     # categories =
-    #
     # [food, clothing, auto]
     #
     for category in categories:
@@ -340,47 +337,35 @@ def create_spend_chart(categories):
         # তা রাখার জন্য Variable।
         spent = 0
 
-
         # =====================================
         # Ledger-এর প্রতিটি Transaction দেখা হচ্ছে।
         # =====================================
         for item in category.ledger:
-
             # Withdraw সবসময় Negative Amount।
-            #
             # Deposit Positive।
-            #
             # তাই শুধু Negative Amount গুলোই
             # Spending হিসেবে ধরা হবে।
             if item['amount'] < 0:
 
                 # abs()
-                #
                 # Absolute Value Return করে।
-                #
                 # -200
-                #
                 # হবে
-                #
                 # 200
-                #
                 spent += abs(item['amount'])
 
         # এই Category-এর মোট Spending List-এ যোগ করা হচ্ছে।
         spent_amounts.append(spent)
-
 
     # =====================================
     # সব Category মিলিয়ে মোট Spending বের করা হচ্ছে।
     # =====================================
     total_spent = sum(spent_amounts)
 
-
     # =====================================
     # Percentage রাখার জন্য Empty List।
     # =====================================
     percentages = []
-
 
     # =====================================
     # প্রতিটি Category-এর Spending Percentage
@@ -394,27 +379,18 @@ def create_spend_chart(categories):
             percentages.append(0)
 
         else:
-
             # =====================================
             # Percentage Formula
-            #
             # (Category Spending / Total Spending)
             # ×100
-            #
             # তারপর নিচের 10-এর ঘরে নামিয়ে আনা হচ্ছে।
-            #
             # উদাহরণ:
-            #
             # 56%
-            #
             # হবে
-            #
             # 50%
             #
             # 84%
-            #
             # হবে
-            #
             # 80%
             #
             # কারণ Chart প্রতি 10% Interval ব্যবহার করে।
@@ -423,12 +399,10 @@ def create_spend_chart(categories):
                 int((amount / total_spent) * 100) // 10 * 10
             )
 
-
     # =====================================
     # Chart-এর প্রথম Heading তৈরি করা হচ্ছে।
     # =====================================
     chart = "Percentage spent by category\n"
-
 
     # =====================================
     # Y-axis তৈরি করা হচ্ছে।
